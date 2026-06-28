@@ -56,7 +56,7 @@ export function DetailScreen({
           />
         </div>
 
-        <div style={{ display: 'flex', gap: 10, marginTop: 12 }}>
+        <div className="chips" style={{ display: 'flex', gap: 10, marginTop: 12, overflowX: 'auto' }}>
           {gallery.map((item, i) => {
             const n = normalizeGalleryItem(item);
             const isVideo = n.type === 'video';
