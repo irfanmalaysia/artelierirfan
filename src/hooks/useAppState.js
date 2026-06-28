@@ -13,7 +13,7 @@ export function useAppState() {
   const [saved, setSaved] = useLocalStorageState('artelierirfan:saved', {});
   const [galleryIdx, setGalleryIdx] = useState(0);
   const [lightbox, setLightbox] = useState(null);
-  const [comingSoon, setComingSoon] = useState(false);
+  const [toast, setToast] = useState('');
   const [connectSheet, setConnectSheet] = useState(false);
   const [messageSheet, setMessageSheet] = useState(false);
   const [userReviews, setUserReviews] = useLocalStorageState('artelierirfan:reviews', {});
@@ -22,11 +22,13 @@ export function useAppState() {
   const toastTimer = useRef(null);
   const reviewTimer = useRef(null);
 
-  const flashComingSoon = useCallback(() => {
-    setComingSoon(true);
+  const flashToast = useCallback((message) => {
+    setToast(message);
     if (toastTimer.current) clearTimeout(toastTimer.current);
-    toastTimer.current = setTimeout(() => setComingSoon(false), TOAST_MS);
+    toastTimer.current = setTimeout(() => setToast(''), TOAST_MS);
   }, []);
+
+  const flashComingSoon = useCallback(() => flashToast('🚧 Coming soon'), [flashToast]);
 
   const goTab = useCallback((tab) => {
     setScreen(tab);
@@ -82,6 +84,22 @@ export function useAppState() {
     window.open(url, '_blank', 'noopener');
   }, []);
 
+  const share = useCallback((product) => {
+    if (!product) return;
+    const shareData = {
+      title: product.title,
+      text: `Check out ${product.title} on ArtelierIrfan`,
+      url: window.location.href,
+    };
+    if (navigator.share) {
+      navigator.share(shareData).catch(() => {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(shareData.url)
+        .then(() => flashToast('🔗 Link copied'))
+        .catch(() => {});
+    }
+  }, [flashToast]);
+
   const filteredProducts = useMemo(() => {
     const q = query.trim().toLowerCase();
     return PRODUCTS.filter(
@@ -107,11 +125,11 @@ export function useAppState() {
   const showDiscovery = query.trim() === '' && cat === 'All';
 
   return {
-    screen, lastTab, cat, query, saved, galleryIdx, lightbox, comingSoon,
+    screen, lastTab, cat, query, saved, galleryIdx, lightbox, toast,
     connectSheet, messageSheet, userReviews, reviewDraft, reviewSubmitted,
     filteredProducts, featured, savedProducts, currentProduct, showDiscovery,
     setQuery, setGalleryIdx, setLightbox, setReviewDraft,
     setConnectSheet, setMessageSheet,
-    goTab, openProduct, goBack, setCat, toggleSaved, submitReview, buy, flashComingSoon,
+    goTab, openProduct, goBack, setCat, toggleSaved, submitReview, buy, share, flashComingSoon,
   };
 }

@@ -5,7 +5,7 @@ import { ProfileScreen } from './screens/ProfileScreen';
 import { DetailScreen } from './screens/DetailScreen';
 import { TabBar } from './components/TabBar';
 import { BottomSheet } from './components/BottomSheet';
-import { ComingSoonToast } from './components/ComingSoonToast';
+import { Toast } from './components/Toast';
 import { ACCENT } from './styles/theme';
 import { TiktokIcon, WhatsappIcon, InstagramIcon, YoutubeIcon, SpotifyIcon, EmailIcon } from './components/icons';
 
@@ -103,6 +103,7 @@ export default function App() {
             onReviewDraftChange={app.setReviewDraft}
             onSubmitReview={app.submitReview}
             onBuy={app.buy}
+            onShare={() => app.share(app.currentProduct)}
           />
         )}
 
@@ -115,7 +116,7 @@ export default function App() {
           />
         )}
 
-        <ComingSoonToast show={app.comingSoon} />
+        <Toast message={app.toast} />
 
         <BottomSheet
           show={app.connectSheet}

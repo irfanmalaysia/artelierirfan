@@ -14,7 +14,7 @@ function normalizeGalleryItem(item) {
 export function DetailScreen({
   product, saved, galleryIdx, lightbox, userReviews, reviewDraft, reviewSubmitted,
   onBack, onToggleSave, onSetGalleryIdx, onOpenLightbox, onCloseLightbox,
-  onReviewDraftChange, onSubmitReview, onBuy,
+  onReviewDraftChange, onSubmitReview, onBuy, onShare,
 }) {
   const gallery = product.gallery || (product.coverImg ? [product.coverImg] : []);
   const activeIdx = galleryIdx || 0;
@@ -170,7 +170,7 @@ export function DetailScreen({
       </div>
 
       <div style={{ flex: 'none', position: 'absolute', bottom: 0, left: 0, right: 0, background: '#fff', borderTop: `1px solid ${COLORS.border}`, padding: '14px 20px 30px', display: 'flex', gap: 12, alignItems: 'center', zIndex: 40 }}>
-        <div style={{ width: 54, height: 54, flex: 'none', borderRadius: 16, background: COLORS.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+        <div onClick={onShare} style={{ width: 54, height: 54, flex: 'none', borderRadius: 16, background: COLORS.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
           <ShareIcon />
         </div>
         <div onClick={() => onBuy(product.pay)} style={{ flex: 1, height: 54, borderRadius: 16, background: `var(--accent, ${ACCENT})`, color: '#15171B', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9, fontSize: 16, fontWeight: 800, cursor: 'pointer' }}>

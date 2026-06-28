@@ -1,5 +1,5 @@
-export function ComingSoonToast({ show }) {
-  if (!show) return null;
+export function Toast({ message }) {
+  if (!message) return null;
   return (
     <div
       style={{
@@ -9,7 +9,7 @@ export function ComingSoonToast({ show }) {
         boxShadow: '0 4px 20px rgba(0,0,0,.25)', pointerEvents: 'none',
       }}
     >
-      🚧 Coming soon
+      {message}
     </div>
   );
 }
