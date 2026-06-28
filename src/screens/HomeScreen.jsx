@@ -15,7 +15,7 @@ export function HomeScreen({
 
   return (
     <div data-screen-label="Home" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ flex: 'none', padding: '56px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ flex: 'none', padding: '20px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
           <img src="/uploads/ai-logo-black.png" alt="ArtelierIrfan" style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover', display: 'block' }} />
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>

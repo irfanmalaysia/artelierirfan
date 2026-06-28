@@ -7,7 +7,7 @@ export function SavedScreen({ savedProducts, onOpenProduct, onToggleSave, onGoHo
 
   return (
     <div data-screen-label="Saved" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ flex: 'none', padding: '56px 20px 14px' }}>
+      <div style={{ flex: 'none', padding: '20px 20px 14px' }}>
         <div style={{ fontSize: 28, fontWeight: 800 }}>Saved</div>
         <div style={{ fontSize: 13, color: COLORS.muted, marginTop: 2 }}>Your wishlist</div>
       </div>

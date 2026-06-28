@@ -25,7 +25,7 @@ export function DetailScreen({
 
   return (
     <div data-screen-label="Detail" style={{ height: '100%', display: 'flex', flexDirection: 'column', background: COLORS.white }}>
-      <div style={{ flex: 'none', padding: '56px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: COLORS.white }}>
+      <div style={{ flex: 'none', padding: '20px 20px 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: COLORS.white }}>
         <div onClick={onBack} style={{ width: 42, height: 42, borderRadius: 13, background: COLORS.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
           <BackChevronIcon size={20} />
         </div>

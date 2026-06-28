@@ -9,7 +9,7 @@ const BIO = "Hi, I'm Irfan — I design calm, practical digital products that he
 export function ProfileScreen({ featured, onOpenProduct, onOpenConnect, onOpenMessage }) {
   return (
     <div data-screen-label="Profile" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ flex: 'none', padding: '56px 20px 8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ flex: 'none', padding: '20px 20px 8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <span style={{ fontSize: 28, fontWeight: 800 }}>About</span>
       </div>
       <div className="scroll" style={{ flex: 1, overflowY: 'auto', paddingBottom: 112 }}>
